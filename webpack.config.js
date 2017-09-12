@@ -1,0 +1,99 @@
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+    devtool: 'inline-source-map',
+    entry: './src/index.jsx',
+    target: "web", // What type of environment it'll be used in
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'index_bundle.js',
+    },
+    resolve: {
+        modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+    module: {
+        rules: [
+            {
+                enforce: 'pre',
+                test: /\.jsx?$/,
+                loader: 'eslint-loader',
+                options: {
+                    failOnWarning: false,
+                    failOnError: false,
+                    emitWarning: true
+                }
+            },
+            {
+            test: /\.jsx?$/,
+            loader: "babel-loader", // JSX to JS
+            options: {
+                presets: ['airbnb']
+            },
+            exclude: [/node_modules\/react-waypoint/]
+        },
+        {
+            test: /\.css$/,
+            use: [
+                {
+                    loader: "style-loader" // Load the CSS
+                }
+            ]
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                {
+                    loader: "style-loader" // Style nodes from JS strings
+                },
+                {
+                    loader: "css-loader" // CSS into CommonJS
+                },
+                {
+                    loader: "sass-loader" // Sass to CSS
+                }
+            ]
+        },
+        {
+            test: /\.svg/,
+            exclude: /node_modules/,
+            loader: 'raw-loader'
+        }],
+        loaders: [
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules\/react-waypoint/ },
+            { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules\/react-waypoint/ }
+        ]
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+          // A common mistake is not stringifying the "production" string.
+          'process.env.NODE_ENV': JSON.stringify('production')
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                screw_ie8: true,
+                conditionals: true,
+                unused: true,
+                comparisons: true,
+                sequences: true,
+                dead_code: true,
+                evaluate: true,
+                if_return: true,
+                join_vars: true,
+            },
+            output: {
+                comments: false,
+            },
+            sourceMap: true,
+        }),
+    ],
+    stats: {
+        colors: true,
+        chunks: false
+  }
+}
