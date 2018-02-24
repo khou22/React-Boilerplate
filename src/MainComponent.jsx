@@ -16,9 +16,18 @@ class MainComponent extends Component {
 
     // Render the DOM
     render() {
+        const data = ["Avi", "Kevin", "etc."];
+        const nameNodes = data.map((name) => {
+            return (
+                <h4 className="main-name">{name}</h4>
+            )
+        });
         return (
             <div>
-                Hello, World.
+                <div className="main-title">
+                    Hello, World.
+                </div>
+                {nameNodes}
             </div>
         );
     }

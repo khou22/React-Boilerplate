@@ -1,0 +1,13 @@
+$pageColor: blue;
+
+.main {
+	&-title {
+		font-size: 50px;
+		color: $pageColor;
+	}
+
+	&-name {
+		margin: 10px;
+		color: $pageColor;
+	}
+}
