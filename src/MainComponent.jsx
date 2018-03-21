@@ -10,12 +10,6 @@ import PropTypes from 'prop-types'; // Helps with prop organization
 
 import FormBuilder from 'react-forms-builder';
 
-
-
-
-
-
-
 class MainComponent extends Component {
  
     componentDidMount() {
