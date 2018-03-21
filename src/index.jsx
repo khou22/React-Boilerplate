@@ -13,9 +13,12 @@ import { render } from 'react-dom';
 import MainComponent from './MainComponent.jsx'; // Get sub-component
 import './styles.scss'; // Import styling
 
+
+
 setTimeout(() => {
     render(
         <MainComponent />,
         document.getElementById('main'),
+
     );
 }, 500);

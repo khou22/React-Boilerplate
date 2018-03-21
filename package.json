@@ -11,8 +11,15 @@
   "author": "Kevin Hou",
   "license": "MIT",
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "form-generator-react": "^2.0.0",
+    "jquery": "^3.3.1",
+    "react": "^15.6.2",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-form-builder": "^0.1.29",
+    "react-forms-builder": "0.0.3",
     "webpack": "^3.5.6"
   },
   "devDependencies": {
